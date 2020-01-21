@@ -1,0 +1,53 @@
+# $Copyright(c) 2009-2010 Progress Software Corporation (PSC). All rights reserved.$
+# $Copyright (c) 2013-2014, 2018-2019 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.$
+# Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG
+
+#
+# Test event file for sensor monitoring tutorial. Defines three sensors "S001", 
+# "S002", and "S003". 
+#
+# The Temperature and Pressure events for "S001"and "S003" indicate a rise in
+# in temperature and pressure which will trigger alerts. 
+#
+# The Temperature and Pressure events for "S002" stay within operation norms
+# and do not trigger alerts.
+#
+AddSensor ("S001",100,800)
+AddSensor ("S002",100,800)
+AddSensor ("S003",100,800)
+BATCH 1000
+"Factory1",Temperature ("S001", 90)
+"Factory1",Pressure    ("S001", 750)
+"Factory1",Temperature ("S002", 84)
+"Factory1",Pressure    ("S002", 700)
+"Factory1",Temperature ("S003", 150)
+"Factory1",Pressure    ("S003", 1500)
+"Factory2",Temperature ("S001", 111)
+"Factory2",Pressure    ("S001", 1100)
+BATCH 2000
+"Factory1",Temperature ("S001", 100)
+"Factory1",Pressure    ("S001", 800)
+"Factory1",Temperature ("S002", 85)
+"Factory1",Pressure    ("S002", 705)
+"Factory1",Temperature ("S003", 200)
+"Factory1",Pressure    ("S003", 2000)
+"Factory2",Temperature ("S001", 130)
+"Factory2",Pressure    ("S001", 1200)
+BATCH 3000
+"Factory1",Temperature ("S001", 111)
+"Factory1",Pressure    ("S001", 850)
+"Factory1",Temperature ("S002", 84)
+"Factory1",Pressure    ("S002", 700)
+"Factory1",Temperature ("S003", 90)
+"Factory1",Pressure    ("S003", 700)
+"Factory2",Temperature ("S001", 120)
+"Factory2",Pressure    ("S001", 1300)
+BATCH 4000
+"Factory1",Temperature ("S001", 120)
+"Factory1",Pressure    ("S001", 900)
+"Factory1",Temperature ("S002", 84)
+"Factory1",Pressure    ("S002", 700)
+"Factory1",Temperature ("S003", 90)
+"Factory1",Pressure    ("S003", 700)
+"Factory2",Temperature ("S001", 1400)
+"Factory2",Pressure    ("S001", 1100)

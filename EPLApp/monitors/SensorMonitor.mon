@@ -1,0 +1,76 @@
+// $Copyright(c) 2009-2010 Progress Software Corporation (PSC). All rights reserved.$
+// $Copyright (c) 2013-2018 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.$
+// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG
+
+//*****************************************************************************
+// Title:         Tutorial - SensorMonitor.mon
+// Description:   Monitor sensors for Temperature & Pressure violations.
+// Dependencies:  None
+//
+//*****************************************************************************
+
+using com.apama.aggregates.mean; 
+
+monitor SensorMonitor {
+
+   action onload () {
+		
+		monitor.subscribe("Factory1");
+		
+		// create a stream of Temperature events from a simple event template
+		stream<Temperature> temperatures := all Temperature(sensorId="S001");
+		
+		// create a stream of Temperature events containing averages 
+		// over a sliding time window of 60 seconds
+		from t in temperatures within 60.0 
+		select Temperature("S001", mean(t.temperature)) as temperature
+		{
+			print temperature.toString();
+		}
+		
+		// create a stream of Pressure events from a simple event template
+		stream<Pressure> pressures := all Pressure(sensorId="S001");
+		from p in pressures within 60.0 
+		select Pressure("S001", mean(p.pressure)) as pressure 
+		{
+			print pressure.toString();
+		}
+		
+		// create streams of average temperature and pressure values
+		stream<float> meanTemperatures := 
+			from t in temperatures within 60.0 
+			select mean(t.temperature);
+		stream<float> meanPressures := 
+			from p in pressures within 60.0 
+			select mean(p.pressure);
+		
+		// create a stream combining the two average reading streams into one
+		from avgT in meanTemperatures retain 1 
+		from avgP in meanPressures retain 1
+		select AverageReadings("S001", avgT, avgP) as averageReadings
+		{
+			print averageReadings.toString();
+		}
+
+		/*
+		
+		// a single query equivalent to the above - a stream combining the most recent 
+		// average readings of temperature and pressure
+		from avgT in 
+			from t in all Temperature(sensorId="S001") 
+				within 60.0 
+				select mean(t.temperature)
+			retain 1
+		from avgP in 
+			from p in all Pressure(sensorId="S001") 
+				within 60.0 
+				select mean(p.pressure) 
+			retain 1
+		select AverageReadings("S001", avgT, avgP) as averageReadings
+		{
+			print averageReadings.toString();
+		}
+		
+		*/
+	}
+}

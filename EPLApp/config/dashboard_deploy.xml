@@ -1,0 +1,31 @@
+<dashboardDeployConfigs>
+  <deploy>
+    <property name="apama.rtv.name" value="Tutorial EPL"/>
+    <property name="apama.customName" value=""/>
+    <property name="apama.deployment.configName" value="DispServ"/>
+    <property name="apama.displayserver.host" value="localhost"/>
+    <property name="apama.rtv.usePanel" value="false"/>
+    <property name="apama.deployment.overwrite" value="true"/>
+    <property name="apama.displayserver.port" value="3279"/>
+    <property name="apama.rtv.main" value=""/>
+    <property name="apama.deployment" value="DISPSERVER"/>
+    <property name="apama.displayserver.refresh" value="1000"/>
+    <property name="apama.deployment.location" value=""/>
+    <property name="apama.rtv.panel" value=""/>
+    <property name="apama.rtv.location" value="DASHBOARD_FOLDER_TOKEN"/>
+  </deploy>
+  <deploy>
+    <property name="apama.rtv.name" value="Tutorial EPL"/>
+    <property name="apama.customName" value=""/>
+    <property name="apama.deployment.configName" value="local"/>
+    <property name="apama.displayserver.host" value="localhost"/>
+    <property name="apama.rtv.usePanel" value="false"/>
+    <property name="apama.deployment.overwrite" value="true"/>
+    <property name="apama.displayserver.port" value="3279"/>
+    <property name="apama.rtv.main" value=""/>
+    <property name="apama.deployment" value="LOCAL"/>
+    <property name="apama.deployment.location" value=""/>
+    <property name="apama.rtv.panel" value=""/>
+    <property name="apama.rtv.location" value="DASHBOARD_FOLDER_TOKEN"/>
+  </deploy>
+</dashboardDeployConfigs>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+<comment>Created : Wed Jul 22 20:22:58 EDT 2009</comment>
+<entry key="apama.rtv.usePanel">false</entry>
+<entry key="apama.rtv.main">SensorMonitor.rtv</entry>
+<entry key="apama.rtv.name">Developing Applications in EPL</entry>
+</properties>

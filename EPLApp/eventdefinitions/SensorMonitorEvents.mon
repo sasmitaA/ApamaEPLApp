@@ -1,0 +1,44 @@
+// $Copyright(c) 2009-2010 Progress Software Corporation (PSC). All rights reserved.$
+// $Copyright (c) 2013,2015 Software AG, Darmstadt, Germany and/or Software AG USA Inc., Reston, VA, USA, and/or its subsidiaries and/or its affiliates and/or their licensors.$
+// Use, reproduction, transfer, publication or disclosure is prohibited except as specifically provided for in your License Agreement with Software AG
+
+//*****************************************************************************
+// Title:         Tutorial - SensorMonitorEvents.mon
+// Description:   Event definitions for sensor monitor.
+// Dependencies:  None
+//*****************************************************************************
+
+/**
+ * Input temperature reading
+ */
+event Temperature {
+    string sensorId;
+    float temperature; 
+}
+
+/**
+ * Input pressure reading
+ */
+event Pressure {
+    string sensorId;
+    float pressure;  
+}
+
+/** 
+ * Sensor configuration
+ */
+event AddSensor {
+    string sensorId;
+    float targetTemperature;
+    float targetPressure;
+}
+
+/**
+* The temperature and pressure readings, each averaged 
+* over a sliding window of 1 minute
+*/
+event AverageReadings {
+	string sensorId;
+	float meanTemperature;
+	float meanPressure;
+}
