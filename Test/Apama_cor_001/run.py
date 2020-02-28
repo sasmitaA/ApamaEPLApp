@@ -14,7 +14,7 @@ class PySysTest(ApamaBaseTest):
 		# automatically get an available port that will be used for all 
 		# operations against it
 		correlator = CorrelatorHelper(self, name='testcorrelator')
-		self.project.APAMA_WORK = self.input+'/../../../EPLApp'
+		self.project.APAMA_WORK = self.descriptor.testDir+'/../../EPLApp'
 		correlator.start(logfile='testcorrelator.log',config=[os.path.join(self.project.APAMA_WORK,'initialization.yaml')])
 		receiveProcess = correlator.receive(filename='receive.evt', channels=['EchoChannel'], logChannels=True)
 		correlator.applicationEventLogging(enable=True)
