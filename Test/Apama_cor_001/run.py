@@ -21,7 +21,7 @@ class PySysTest(ApamaBaseTest):
 		
 		# not strictly necessary in this testcase, but a useful example of waiting 
 		# for a log message
-		self.waitForSignal('testcorrelator.log', expr="Done processing external event: Pressure\(\"S003\",700\), qlen = 1", 
+		self.waitForSignal('testcorrelator.out', expr="AverageReadings\(\"S001\",105\.25,825\)", 
 			process=correlator.process, errorExpr=[' (ERROR|FATAL) .*'])
 		
 			
